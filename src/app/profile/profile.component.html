@@ -1,0 +1,126 @@
+<div
+  class="profile-container w-full h-full flex justify-center items-center p-20 gap-20 text-[#6d7582]"
+>
+  <div
+    class="shadow_box user-info flex flex-col items-center justify-start p-10 w-[40%] h-full"
+  >
+    <div class="text-2xl font-bold self-start text-[#6d7582] pb-5">
+      Hello {{ displayName }}!
+    </div>
+    <div class="">
+      <img
+        [src]="getDisplayPhotoURL()"
+        alt=""
+        onerror="this.src='assets/profile.png'"
+        class="shadow_box w-40 h-40 !rounded-full border-2 border-white"
+      />
+    </div>
+    <div class="w-full h-10 pt-10 text-center text-2xl font-bold">
+      {{ displayName }}
+    </div>
+    <div
+      class="flex-1 pt-20 self-start flex flex-col items-start gap-4 text-[#6d7582]"
+    >
+      <div class="flex flex-col items-start gap-2">
+        Email:
+        <p class="text-xl font-bold">{{ userEmail }}</p>
+      </div>
+      <div class="">
+        Phone:
+        <p class="text-xl font-bold">+795 23123322</p>
+      </div>
+      <div class="">
+        Address:
+        <p class="text-xl font-bold">1234 Main St, Ulaanbaatar, Mongolia</p>
+      </div>
+      <div class="">
+        Date of birth:
+        <p class="text-xl font-bold">12/12/1990</p>
+      </div>
+    </div>
+    <div
+      class="shadow_box logout-button2 self-start flex items-center justify-center text-white w-40 h-10 !bg-[#FF2C2C] mt-10"
+      (click)="onSignOut()"
+    >
+      Logout
+    </div>
+  </div>
+  <div class="flex flex-col items-center justify-center w-full h-full">
+    <div class="flex items-center justify-between pb-10 w-full">
+      <div class="tabs flex items-center justify-start gap-10 text-[#6d7582]">
+        <div
+          class="shadow_box w-40 h-10 flex items-center justify-center"
+          (click)="activeTab = 'menu1'"
+          [class.active-tab]="activeTab === 'menu1'"
+        >
+          Lorem
+        </div>
+        <div
+          class="shadow_box w-40 h-10 flex items-center justify-center"
+          (click)="activeTab = 'menu2'"
+          [class.active-tab]="activeTab === 'menu2'"
+        >
+          lorem
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="activeTab === 'menu1'"
+      class="shadow_box w-full h-full flex flex-col items-center justify-center gap-10 p-10"
+    >
+      <div class="shadow_box card w-full h-full">
+        <div class="text-2xl font-bold text-center my-2">Your activity</div>
+        <div class="mb-2 mx-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+          perspiciatis unde laboriosam cumque ab eligendi autem provident,
+          dolorum suscipit, incidunt magni placeat, libero consequuntur facilis
+          illum
+        </div>
+      </div>
+      <div class="shadow_box card w-full h-full">
+        <div class="text-2xl font-bold text-center my-2">Lorem ipsum</div>
+        <div class="mb-2 mx-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+          perspiciatis unde laboriosam cumque ab eligendi autem provident,
+          dolorum suscipit, incidunt magni placeat, libero consequuntur facilis
+          illum quis
+        </div>
+      </div>
+      <div class="shadow_box card w-full h-full">
+        <div class="text-2xl font-bold text-center my-2">Lorem ipsum</div>
+        <div class="mb-2 mx-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+          perspiciatis unde laboriosam cumque ab eligendi autem provident,
+          dolorum suscipit, incidunt magni placeat, libero consequuntur facilis
+          illum qui
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="activeTab === 'menu2'"
+      class="w-full h-full flex flex-col items-center justify-center"
+    >
+      <div class="text-2xl font-bold text-[#6d7582] pb-5">
+        Your purchase history
+      </div>
+      <div
+        class="grid-container w-full h-full grid grid-cols-3 grid-rows-2 gap-10"
+      >
+        <div *ngFor="let item of items">
+          <div
+            class="mini-card shadow_box h-full w-full flex flex-col items-center justify-evenly gap-2"
+          >
+            <div class="justify-start">
+              <img [src]="item.image" height="100" width="100" />
+            </div>
+            <div class="text-2xl">{{ item.name }}</div>
+            <div class="text-2xl font-bold">${{ item.price }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="shadow_box logout-button hidden text-white" (click)="onSignOut()">
+    Logout
+  </div>
+</div>

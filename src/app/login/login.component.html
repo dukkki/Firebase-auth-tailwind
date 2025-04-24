@@ -1,0 +1,41 @@
+<div class="w-full h-full flex justify-center items-center">
+  <div class="shadow_box login-card flex flex-col items-center justify-center p-10 w-90">
+    <div class="text-[#6d7582] mb-10 text-2xl font-bold ">Login</div>
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col items-center justify-center w-full"
+    >
+      <input
+        class="login-input shadow_box h-14 w-full mb-10 px-5 text-[#6d7582]"
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+      />
+      <input
+        class="login-input shadow_box h-14 w-full mb-10 px-5 text-[#6d7582]"
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Enter your password"
+      />
+      <div
+        *ngIf="
+          loginForm.controls['password'].invalid &&
+          loginForm.controls['password'].touched
+        "
+        class="error -mt-5 mb-5"
+      >
+        Password is required.
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid" class="shadow_box login-button w-full h-14 text-[#6d7582] cursor-pointer">Login</button>
+    </form>
+    <div class="my-5 text-[#6d7582]">or</div>
+    <button type="button" (click)="onGoogleLogin()" class="shadow_box login-button w-full h-14 text-[#6d7582] cursor-pointer flex items-center justify-center">
+      <img src="assets/gmail.svg" alt="Google" class="pr-5" />
+      <div class="google-text">Login with Google</div>
+    </button>
+  </div>
+</div>
