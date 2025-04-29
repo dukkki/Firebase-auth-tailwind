@@ -94,7 +94,6 @@ export class LoginComponent implements OnInit {
   private setUserCookie(user: any): void {
     if (isPlatformBrowser(this.platformId)) {
       document.cookie = 'user=' + encodeURIComponent(JSON.stringify(user)) + '; path=/; max-age=3600; SameSite=Strict';
-      console.log('User cookie set', user);
     }
   }
 }

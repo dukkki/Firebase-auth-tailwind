@@ -33,24 +33,15 @@ export class ProfileComponent {
     private firebaseApp: FirebaseApp
   ) {
     if (isPlatformBrowser(this.platformId)) {
-      console.log(getAuth(this.firebaseApp));
       if (this.firebaseApp && this.firebaseApp.options) {
         try {
           const authUser = getAuth(this.firebaseApp).currentUser;
-          console.log(
-            '🚀 ~ ProfileComponent ~ constructor ~ authUser:',
-            authUser
-          );
           if (authUser) {
             this.userEmail = authUser.email || 'Unknown';
             this.photoURL = authUser.photoURL || '';
             this.displayName = authUser.displayName || 'No name';
           } else {
             const storedUserCookie = this.getCookie('user');
-            console.log(
-              '🚀 ~ ProfileComponent ~ constructor ~ storedUserCookie:',
-              storedUserCookie
-            );
             if (storedUserCookie) {
               const user = JSON.parse(decodeURIComponent(storedUserCookie));
               this.userEmail = user.email || 'Unknown';
